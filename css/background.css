@@ -1,11 +1,12 @@
-#web_bg {
-    /* 背景图像的地址（url括号里）  */
-    background: url(../img/wallpaper.png);
-    /* 背景图像不重复 */
-    background-repeat: no-repeat;
-    /* 背景图像大小 */
-    background-size: cover;
-  }
+#page-header {
+  /* 背景图像的地址（url括号里）  */
+  /* background: url(../img/wallpaper.png); */
+  /* 背景图像不重复 */
+  background-repeat: no-repeat;
+  /* 背景图像大小 */
+  background-size: cover;
+  background-color: transparent;
+}
 /* 页脚footer */
 /* 渐变色滚动动画 */
 @-webkit-keyframes Gradient {
@@ -64,6 +65,7 @@
     border-top-right-radius: 10px;
   }
   #footer:before {
-    background-color: rgba(0, 0, 0, 0);
+    /* background-color: rgba(0, 0, 0, 0); */
+    background-color: transparent;
   }
   
