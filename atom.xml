@@ -6,7 +6,7 @@
   <link href="http://yoursite.com/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2021-07-21T10:24:50.404Z</updated>
+  <updated>2021-07-21T14:41:19.586Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="http://yoursite.com/2021/07/21/butterfly%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96/"/>
+    <id>http://yoursite.com/2021/07/21/butterfly%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96/</id>
+    <published>2021-07-21T14:41:16.793Z</published>
+    <updated>2021-07-21T14:41:19.586Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><p>记录下我对 Butterfly 主题的魔改, 一方面可供参考, 另一方面可以记录下自己的修改方便查找.</p><p>本博客已开源! 请看 Hexo modify theme butterfly. 以下魔改部分集合到魔改主题, 部分已放弃 (不兼容或者其他原因). 如果更改失效, 可能是版本问题, 如果想要尽快使用这些魔改, 最便捷的方式是直接使用我的魔改主题. 魔改主题保留了所有原配置, 所有魔改配置均可关闭.</p><p>Mathjax 公式渲染去除滚动条<br>进入 source/css/_layout/third-party.styl , 找到如下内容</p><p>.has-jax<br>  overflow: auto<br>改成</p><p>.has-jax<br>  overflow: visible<br>设置半透明<br>效果看我博客.</p><p>进入source/css/_layout/page.styl 文件, 找到以下内容</p><p>.layout_page<br>  display: flex<br>  align-items: flex-start<br>  margin: 0 auto<br>  padding: 2rem 15px<br>  max-width: 1200px<br>后面加上 opacity:0.7 改为</p><p>.layout_page<br>  display: flex<br>  align-items: flex-start<br>  margin: 0 auto<br>  padding: 2rem 15px<br>  max-width: 1200px<br>  opacity:0.7<br>这里的 0.7 是透明度, 取值 0~1 , 越大越不透明, 越小越透明, 可以自己取值.</p><p>post 文章侧边栏去掉滚动条<br>文章有标题时, 左边就会出现侧边栏, 而侧边栏的滚动条实在是不太美观, 于是隐藏掉.</p><p>进入 layout/includes/sidebar.pug 看到以下内容</p><p>if (page.encrypt == true)<br>  div.sidebar-toc__content.toc-div-class(style=”display:none”)!=toc(page.origin, {list_number: tocNumber})<br>else<br>  div.sidebar-toc__content!=toc(page.content, {list_number: tocNumber})<br>只要为侧边栏加一个 style=”overflow: hidden;” 就能隐藏滚动条, 因此改为</p><p>if (page.encrypt == true)<br>  div.sidebar-toc__content.toc-div-class(style=”display:none”)!=toc(page.origin, {list_number: tocNumber})<br>else<br>  div.sidebar-toc__content(style=”overflow: hidden;”)!=toc(page.content, {list_number: tocNumber})<br>就好了.</p><p>非 post 随机 banner , 网页背景, 页脚图片<br>页脚, banner 头图设置为透明<br>页脚<br>在 butterfly/layout/includes/layout.pug 下找到如下代码</p><ul><li><p>var footer_bg = theme.footer_bg == false ? ‘’ : bg_img<br>在其下面追加变成</p></li><li><p>var footer_bg = theme.footer_bg == false ? ‘’ : bg_img<br>if !is_post()</p><ul><li>var footer_bg = ‘background-color: transparent;’<br>banner 头图<br>在 butterfly/layout/includes/header/index.pug 下找到如下代码</li></ul></li></ul><p>#nav(class=isHomeClass style=bg_img)<br>在其上追加变成</p><p>if !is_post()</p><ul><li>var bg_img = ‘background-color:transparent;’<br>#nav(class=isHomeClass style=bg_img)<br>随机背景设置<br>在 butterfly/layout/includes/layout.pug 下找到如下代码</li></ul><p>if theme.background</p><ul><li><p>var is_photo = theme.background.substring(3,0) === ‘url’ ? ‘photo’:’color’<br>改为</p></li><li><p>var is_photo = ‘photo’<br>(对, 就是直接替换, 注意位置要一样, 当然你也可以把原来的代码注释掉)</p></li></ul><p>然后在 butterfly/layout/includes/layout.pug 下找到如下代码</p><p>footer#footer(style=footer_bg data-type=is_bg)<br>  !=partial(‘includes/footer’, {}, {cache:theme.fragment_cache})<br>在其下追加变成</p><p>footer#footer(style=footer_bg data-type=is_bg)<br>  !=partial(‘includes/footer’, {}, {cache:theme.fragment_cache})<br>if !is_post()<br>  script() var bg_index = Math.floor(Math.random() * #{theme.bg_num});var res = ‘background-image: url(“<a href="https://cdn.jsdelivr.net/gh/cnyist/banner/&#39;">https://cdn.jsdelivr.net/gh/cnyist/banner/&#39;</a> + bg_index + ‘-min.jpg”); background-attachment: fixed;’;document.getElementById(‘web_bg’).style = res<br>同时在 butterfly/_config.yml 里添加以下内容</p><h1 id="banner图数量"><a href="#banner图数量" class="headerlink" title="banner图数量"></a>banner图数量</h1><p>bg_num: 48<br>当然这只是使用我的 banner 图片, 如果要用你自己的, 还需要相应的更改, 这需要图片的 url 符合一定的格式, 即</p><p>前缀 + [从 0 开始递增序号] + 后缀<br>然后将内容改成</p><p>footer#footer(style=footer_bg data-type=is_bg)<br>  !=partial(‘includes/footer’, {}, {cache:theme.fragment_cache})<br>if !is_post()<br>  script() var bg_index = Math.floor(Math.random() * #{theme.bg_num});var res = ‘background-image: url(“前缀’ + bg_index + ‘后缀”); background-attachment: fixed;’;document.getElementById(‘web_bg’).style = res<br>同时将 _config.yml 刚刚添加的配置设置为你的 banner 图数量.</p><p>举个例子, 我的 banner 图 url 就是</p><p>前缀 + [从 0 开始递增序号] + -min.jpg<br>其中某个 banner 图就是</p><p><a href="https://cdn.jsdelivr.net/gh/cnyist/banner/3-min.jpg">https://cdn.jsdelivr.net/gh/cnyist/banner/3-min.jpg</a></p><p>其中 <a href="https://cdn.jsdelivr.net/gh/cnyist/banner/">https://cdn.jsdelivr.net/gh/cnyist/banner/</a> 就是我图片的 url 的前缀, 3 即是 [从 0 开始递增序号] (也就是说还有 0, 1, 2…) , -min.jpg 是图片 url 的后缀.</p><p>只要你的图片的 url 由这三个部分组成, 那么就可以将前缀和后缀填入代码中, 这样就可以实现使用自己的 banner 了.</p><p>footer 动态颜色<br>这里只设置 post 文章中的 (避免与 page 的魔改冲突).</p><p>打开 layout/includes/head.pug , 添加以下内容</p><p>if is_post()<br>  link(rel=’stylesheet’, href=”footer.min.css”)<br>就好了.</p><p>黑暗模式下 nav 处黑色浮块消除<br>打开 source/css/_mode/darkmode.styl 找到如下字段</p><p>#nav<br>  &amp;:before<br>    position: absolute<br>    top: 0<br>    right: 0<br>    bottom: 0<br>    left: 0<br>    background-color: alpha($dark-black, .7)<br>    content: ‘’<br>去掉 background-color 改为</p><p>#nav<br>  &amp;:before<br>    position: absolute<br>    top: 0<br>    right: 0<br>    bottom: 0<br>    left: 0<br>    content: ‘’<br>随机 banner<br>Butterfly 主题的 banner 大图一个页面是只有一张的, 并且主题配置里也没有多张的设置, 因此如果你想要实现 banner 能够随机显示, 那么就需要魔改主题.</p><p>2.1.0<br>在 Butterfly/layout/includes/nav.pug 文件中添加以下内容</p><p>script document.getElementById(“nav”).style = ‘background-image: url(“‘ + Math.floor(Math.random()*9) + ‘.jpg”); background-attachment: fixed;’<br>在以上的代码中需要将 cnyist 换成你自己的 github 用户名 (如果你是部署在 github 上的话). 其原理就是利用 js 生成 0-8 的随机数, 然后修改 banner 图.</p><p>当然仅仅加这段代码是没有用的, 还要在 Butterfly/source/img/banner/ 下 (没有文件夹就自己创建) 放你自己想用的 banner 大图, 名字限定在 [0-8].jpg. 如果要增加 banner 图片的话名字就继续递增, 同时上面的代码中的 9 改成你的 banner 图数量. 当然如果数量不足 9 张, 那么同样也要改成你的 banner 图数量.</p><p>这段代码还会把文章的 banner 也变为随机 banner 而不是 cover, 于是如果想要文章的 banner 还是原来的图的话, 那就再加一个条件判断.</p><p>if !is_post()<br>  script document.getElementById(“nav”).style = ‘background-image: url(“‘ + Math.floor(Math.random()*9) + ‘.jpg”); background-attachment: fixed;’<br>2.2.5<br>升级到 2.2.5 版本后, 发现原来的随机 banner 效果居然失效了! 然后查看源码才发现 nav.png 这个文件似乎被作者抛弃了, 将 banner 图的功能放在了 Butterfly/layout/includes/header/index.pug 里. 因此只要把以上代码放进这个文件里就行了, 代码的说明和上面是一样的, 至于 nav.pug 里的内容改不改都一样的.</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot; cla</summary>
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>post</title>

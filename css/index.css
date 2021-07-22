@@ -2183,6 +2183,9 @@ blockquote footer cite:before {
   padding: 2rem 15px;
   max-width: 1200px;
   width: 100%;
+  opacity: 0.9;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
+  filter: alpha(opacity=90);
 }
 @media screen and (max-width: 900px) {
   .layout {
