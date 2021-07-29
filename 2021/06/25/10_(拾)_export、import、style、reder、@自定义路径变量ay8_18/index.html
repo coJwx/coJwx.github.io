@@ -1,0 +1,251 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>export、import、style、render、@自定义路径变量 | 星海行舟的博客</title><meta name="keywords" content="Vue"><meta name="author" content="星海行舟"><meta name="copyright" content="星海行舟"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="———————–&#x3D;&#x3D;(VUE拾)&#x3D;&#x3D;————————-export、import、style、render、@自定义路径变量一、 导出export1. export default 一个js里头只能用一次,且只能导出一个对象或者变量  2.export {} 可以用多次,每次可以导出多个,导出的不是对象  二、导入import(3.1)export default导入12import 变量名 fr">
+<meta property="og:type" content="article">
+<meta property="og:title" content="export、import、style、render、@自定义路径变量">
+<meta property="og:url" content="http://yoursite.com/2021/06/25/10_(%E6%8B%BE)_export%E3%80%81import%E3%80%81style%E3%80%81reder%E3%80%81@%E8%87%AA%E5%AE%9A%E4%B9%89%E8%B7%AF%E5%BE%84%E5%8F%98%E9%87%8Fay8_18/index.html">
+<meta property="og:site_name" content="星海行舟的博客">
+<meta property="og:description" content="———————–&#x3D;&#x3D;(VUE拾)&#x3D;&#x3D;————————-export、import、style、render、@自定义路径变量一、 导出export1. export default 一个js里头只能用一次,且只能导出一个对象或者变量  2.export {} 可以用多次,每次可以导出多个,导出的不是对象  二、导入import(3.1)export default导入12import 变量名 fr">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://ftp.bmp.ovh/imgs/2021/07/2d95679ad9193851.jpg">
+<meta property="article:published_time" content="2021-06-25T09:53:31.000Z">
+<meta property="article:modified_time" content="2021-07-29T01:50:31.889Z">
+<meta property="article:author" content="星海行舟">
+<meta property="article:tag" content="Vue">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ftp.bmp.ovh/imgs/2021/07/2d95679ad9193851.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://yoursite.com/2021/06/25/10_(%E6%8B%BE)_export%E3%80%81import%E3%80%81style%E3%80%81reder%E3%80%81@%E8%87%AA%E5%AE%9A%E4%B9%89%E8%B7%AF%E5%BE%84%E5%8F%98%E9%87%8Fay8_18/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'export、import、style、render、@自定义路径变量',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-07-29 09:50:31'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const fontSizeVal = saveToLocal.get('global-font-size')
+    if (fontSizeVal !== undefined) {
+      document.documentElement.style.setProperty('--global-font-size', fontSizeVal + 'px')
+    }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/background.css"><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="星海行舟的博客" type="application/atom+xml">
+</head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">34</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">16</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://ftp.bmp.ovh/imgs/2021/07/2d95679ad9193851.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">星海行舟的博客</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">export、import、style、render、@自定义路径变量</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-06-25T09:53:31.000Z" title="发表于 2021-06-25 17:53:31">2021-06-25</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-07-29T01:50:31.889Z" title="更新于 2021-07-29 09:50:31">2021-07-29</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Vue/">Vue</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="export、import、style、render、@自定义路径变量"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="———————–-VUE拾-————————"><a href="#———————–-VUE拾-————————" class="headerlink" title="———————–==(VUE拾)==————————-"></a>———————–==(VUE拾)==————————-</h1><h1 id="export、import、style、render、-自定义路径变量"><a href="#export、import、style、render、-自定义路径变量" class="headerlink" title="export、import、style、render、@自定义路径变量"></a>export、import、style、render、@自定义路径变量</h1><h2 id="一、-导出export"><a href="#一、-导出export" class="headerlink" title="一、 导出export"></a>一、 导出export</h2><h3 id="1-export-default"><a href="#1-export-default" class="headerlink" title="1. export default"></a>1. <em>export default</em></h3><blockquote>
+<p><em>一个js里头只能用一次,且只能导出一个对象或者变量</em></p>
+</blockquote>
+<h3 id="2-export"><a href="#2-export" class="headerlink" title="2.export {}"></a>2.<em>export {}</em></h3><blockquote>
+<p><em>可以用多次,每次可以导出多个,导出的不是对象</em></p>
+</blockquote>
+<h2 id="二、导入import"><a href="#二、导入import" class="headerlink" title="二、导入import"></a>二、导入import</h2><h3 id="3-1-export-default导入"><a href="#3-1-export-default导入" class="headerlink" title="(3.1)export default导入"></a>(3.1)export default导入</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> 变量名 <span class="keyword">from</span> <span class="string">&#x27;js文件&#x27;</span></span><br><span class="line">变量名=导出的对象</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-2-export-导入"><a href="#3-2-export-导入" class="headerlink" title="(3.2)*export {}*导入"></a>(3.2)*export {}*导入</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">类比结构赋值</span><br><span class="line">           <span class="keyword">import</span> &#123;变量名<span class="number">1</span>(必须跟<span class="keyword">export</span>里头的变量一样),变量名<span class="number">2</span>&#125; <span class="keyword">from</span> <span class="string">&#x27;js文件&#x27;</span></span><br><span class="line">          可以给变量取别名 变量名 <span class="keyword">as</span> 新的名字 </span><br></pre></td></tr></table></figure>
+
+<h3 id="3-3-import-css"><a href="#3-3-import-css" class="headerlink" title="(3.3)import css"></a>(3.3)<em>import css</em></h3><blockquote>
+<p><em>直接把css的内容引进来</em></p>
+</blockquote>
+<h3 id="3-4-import-html"><a href="#3-4-import-html" class="headerlink" title="(3.4) import html"></a>(3.4) <em>import html</em></h3><blockquote>
+<p><em>直接把内容引进来</em></p>
+</blockquote>
+<h3 id="3-5-import-js"><a href="#3-5-import-js" class="headerlink" title="(3.5) import js"></a>(3.5) <em>import js</em></h3><blockquote>
+<p><em>引进来 export default export{}</em></p>
+</blockquote>
+<h3 id="3-6-import-vue"><a href="#3-6-import-vue" class="headerlink" title="(3.6)import vue"></a>(3.6)<em>import vue</em></h3><blockquote>
+<p>引进来的时一个vue组件对象*</p>
+</blockquote>
+<h2 id="三、组件为何可以相互引用"><a href="#三、组件为何可以相互引用" class="headerlink" title="三、组件为何可以相互引用"></a>三、<em>组件为何可以相互引用</em></h2><p> <em>核心原理源于import vue文件 ,会将vue文件的三部曲转换成vue的组件对象</em>上的组件对象即</p>
+<blockquote>
+<p> <em>1) template标签创建组件</em></p>
+<ol start="2">
+<li>let login ={*</li>
+</ol>
+<p>​            <em>temolate:’#login’</em></p>
+<p>​            <em>data:…..</em></p>
+<p>​          <em>}</em></p>
+<p> 3)<em>然后通过 components: { login}按需注册</em></p>
+</blockquote>
+<h2 id="四、Style样式"><a href="#四、Style样式" class="headerlink" title="四、Style样式"></a>四、Style样式</h2><h3 id="4-1-scoped-局部生效的原理"><a href="#4-1-scoped-局部生效的原理" class="headerlink" title="(4.1) scoped 局部生效的原理"></a>(4.1) <em>scoped 局部生效的原理</em></h3><blockquote>
+<p> <em>让style里头的css选择器对应的元素共同添加一个唯一的属性标识</em></p>
+</blockquote>
+<h3 id="4-2-lang-指定语言"><a href="#4-2-lang-指定语言" class="headerlink" title="(4.2)  lang 指定语言"></a>(4.2)  <em>lang 指定语言</em></h3><blockquote>
+<p> <em>如果没有指定相应类型的语种,在低版本的vue-cli与h5中会报错</em>   </p>
+</blockquote>
+<h2 id="五、Main-js中的-render"><a href="#五、Main-js中的-render" class="headerlink" title="五、Main.js中的 render"></a>五、Main.js中的 <em>render</em></h2><blockquote>
+<p><em>将一个组件完全的替代掉index.html里头的容器标签</em></p>
+<p> <em>替代的原理:</em></p>
+<p>​         <em>根据el指定的容器来进行替代</em></p>
+<p>​          旧版本在2.9.6里头仍然时使用el*</p>
+<p>​          <em>只不过更新的版本使用的时$mount替代el</em></p>
+</blockquote>
+<h3 id="5-1-与router-view的区别"><a href="#5-1-与router-view的区别" class="headerlink" title="(5.1)与router-view的区别:"></a>(5.1)<em>与router-view的区别:</em></h3><blockquote>
+<p><em>router-view 只是占位符,并不会消失</em></p>
+</blockquote>
+<h3 id="5-2-rander-h-gt-h-APP-演变"><a href="#5-2-rander-h-gt-h-APP-演变" class="headerlink" title="(5.2)rander: h =&gt;h(APP)演变"></a>(5.2)rander: h =&gt;h(APP)演变</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">演变 :rander:<span class="function"><span class="keyword">function</span> (<span class="params">h</span>) </span>&#123;</span><br><span class="line">                    <span class="keyword">return</span> h(APP)</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="function"><span class="title">rander</span>(<span class="params">h</span>)</span> &#123;</span><br><span class="line">                    <span class="keyword">return</span> h(APP)</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="attr">rander</span>: <span class="function">(<span class="params">h</span>) =&gt;</span>&#123;</span><br><span class="line">                    <span class="keyword">return</span> h(APP)</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="attr">rander</span>: <span class="function"><span class="params">h</span> =&gt;</span>&#123;</span><br><span class="line">                    <span class="keyword">return</span> h(APP)</span><br><span class="line">                &#125;</span><br><span class="line">                当函数体的代码只有一行<span class="keyword">return</span>的代码,那么大括号和<span class="keyword">return</span>可以省略</span><br><span class="line">                <span class="attr">rander</span> : <span class="function"><span class="params">h</span> =&gt;</span>h(APP)</span><br><span class="line">                 =&gt;返回一个渲染后的结果</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-3-h的含义"><a href="#5-3-h的含义" class="headerlink" title="(5.3)h的含义:"></a>(5.3)h的含义:</h3><blockquote>
+<p><em>h是一个draw的函数 vue提供的</em></p>
+<p>​          <em>为什么是一个函数:</em></p>
+<p>​            <em>因为h(APP),假如不是函数肯定不能带括号</em></p>
+</blockquote>
+<h2 id="六、router"><a href="#六、router" class="headerlink" title="六、router"></a>六、router</h2><blockquote>
+<p><em>考虑到router里头在未来的业务拓展的场景</em></p>
+<p>​      <em>路由可能会很多 可能会出现子路由的情况**所以借用export/import模块化编程</em></p>
+<p>​      <em>–&gt;高内聚低耦合的应用实例</em></p>
+<p>​        *eg:内聚 :相同功能的聚集在一起   <em>耦合:不同功能强绑定</em></p>
+</blockquote>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">星海行舟</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://yoursite.com/2021/06/25/10_(%E6%8B%BE)_export%E3%80%81import%E3%80%81style%E3%80%81reder%E3%80%81@%E8%87%AA%E5%AE%9A%E4%B9%89%E8%B7%AF%E5%BE%84%E5%8F%98%E9%87%8Fay8_18/">http://yoursite.com/2021/06/25/10_(%E6%8B%BE)_export%E3%80%81import%E3%80%81style%E3%80%81reder%E3%80%81@%E8%87%AA%E5%AE%9A%E4%B9%89%E8%B7%AF%E5%BE%84%E5%8F%98%E9%87%8Fay8_18/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://yoursite.com" target="_blank">星海行舟的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Vue/">Vue</a></div><div class="post_share"><div class="social-share" data-image="https://ftp.bmp.ovh/imgs/2021/07/2d95679ad9193851.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/06/28/11_(%E6%8B%BE%E5%A3%B9)_VUEX=day8_19/"><img class="prev-cover" src="https://ftp.bmp.ovh/imgs/2021/07/2d95679ad9193851.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">VUEX</div></div></a></div><div class="next-post pull-right"><a href="/2021/06/21/9_(%E7%8E%96)_Vue%E5%88%9D%E6%AD%A5%E8%AE%B2%E8%A7%A3/"><img class="next-cover" src="https://ftp.bmp.ovh/imgs/2021/07/2d95679ad9193851.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">vue初步讲解</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2021/06/28/11_(拾壹)_VUEX=day8_19/" title="VUEX"><img class="cover" src="https://ftp.bmp.ovh/imgs/2021/07/2d95679ad9193851.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-06-28</div><div class="title">VUEX</div></div></a></div><div><a href="/2021/07/02/12_(拾贰)_Element-ui/" title="Element-ui"><img class="cover" src="https://ftp.bmp.ovh/imgs/2021/07/2d95679ad9193851.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-07-02</div><div class="title">Element-ui</div></div></a></div><div><a href="/2021/05/21/1_(壹)_Vue初步认知day_8_6/" title="VUE的初步认识"><img class="cover" src="https://ftp.bmp.ovh/imgs/2021/07/2d95679ad9193851.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-05-21</div><div class="title">VUE的初步认识</div></div></a></div><div><a href="/2021/05/21/2_(贰)_Vue原生指令、MVVM解释day_8_7/" title="Vue原生指令、MVVM解释"><img class="cover" src="https://ftp.bmp.ovh/imgs/2021/07/2d95679ad9193851.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-05-21</div><div class="title">Vue原生指令、MVVM解释</div></div></a></div><div><a href="/2021/05/22/3_(叁)_过滤器、键盘修饰符、自定义指令、生命周期day_8_8/" title="过滤器、键盘修饰符、自定义指令、生命周期"><img class="cover" src="https://ftp.bmp.ovh/imgs/2021/07/2d95679ad9193851.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-05-22</div><div class="title">过滤器、键盘修饰符、自定义指令、生命周期</div></div></a></div><div><a href="/2021/05/24/4.1_(肆_1)_JSONP封装day8_9/" title="JSONP封装"><img class="cover" src="https://ftp.bmp.ovh/imgs/2021/07/2d95679ad9193851.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-05-24</div><div class="title">JSONP封装</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">星海行舟</div><div class="author-info__description">小江要努力变强呀</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">34</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">16</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/coJwx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">欢迎来到我的博客</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%93-VUE%E6%8B%BE-%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%94%E2%80%94"><span class="toc-number">1.</span> <span class="toc-text">———————–&#x3D;&#x3D;(VUE拾)&#x3D;&#x3D;————————-</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#export%E3%80%81import%E3%80%81style%E3%80%81render%E3%80%81-%E8%87%AA%E5%AE%9A%E4%B9%89%E8%B7%AF%E5%BE%84%E5%8F%98%E9%87%8F"><span class="toc-number">2.</span> <span class="toc-text">export、import、style、render、@自定义路径变量</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81-%E5%AF%BC%E5%87%BAexport"><span class="toc-number">2.1.</span> <span class="toc-text">一、 导出export</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-export-default"><span class="toc-number">2.1.1.</span> <span class="toc-text">1. export default</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-export"><span class="toc-number">2.1.2.</span> <span class="toc-text">2.export {}</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%AF%BC%E5%85%A5import"><span class="toc-number">2.2.</span> <span class="toc-text">二、导入import</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-export-default%E5%AF%BC%E5%85%A5"><span class="toc-number">2.2.1.</span> <span class="toc-text">(3.1)export default导入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-export-%E5%AF%BC%E5%85%A5"><span class="toc-number">2.2.2.</span> <span class="toc-text">(3.2)*export {}*导入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-import-css"><span class="toc-number">2.2.3.</span> <span class="toc-text">(3.3)import css</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-import-html"><span class="toc-number">2.2.4.</span> <span class="toc-text">(3.4) import html</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-5-import-js"><span class="toc-number">2.2.5.</span> <span class="toc-text">(3.5) import js</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-6-import-vue"><span class="toc-number">2.2.6.</span> <span class="toc-text">(3.6)import vue</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E7%BB%84%E4%BB%B6%E4%B8%BA%E4%BD%95%E5%8F%AF%E4%BB%A5%E7%9B%B8%E4%BA%92%E5%BC%95%E7%94%A8"><span class="toc-number">2.3.</span> <span class="toc-text">三、组件为何可以相互引用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81Style%E6%A0%B7%E5%BC%8F"><span class="toc-number">2.4.</span> <span class="toc-text">四、Style样式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-scoped-%E5%B1%80%E9%83%A8%E7%94%9F%E6%95%88%E7%9A%84%E5%8E%9F%E7%90%86"><span class="toc-number">2.4.1.</span> <span class="toc-text">(4.1) scoped 局部生效的原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-lang-%E6%8C%87%E5%AE%9A%E8%AF%AD%E8%A8%80"><span class="toc-number">2.4.2.</span> <span class="toc-text">(4.2)  lang 指定语言</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81Main-js%E4%B8%AD%E7%9A%84-render"><span class="toc-number">2.5.</span> <span class="toc-text">五、Main.js中的 render</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-%E4%B8%8Erouter-view%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">2.5.1.</span> <span class="toc-text">(5.1)与router-view的区别:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-rander-h-gt-h-APP-%E6%BC%94%E5%8F%98"><span class="toc-number">2.5.2.</span> <span class="toc-text">(5.2)rander: h &#x3D;&gt;h(APP)演变</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-3-h%E7%9A%84%E5%90%AB%E4%B9%89"><span class="toc-number">2.5.3.</span> <span class="toc-text">(5.3)h的含义:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%81router"><span class="toc-number">2.6.</span> <span class="toc-text">六、router</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/07/15/butterfly%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96/" title="butterfly主题美化"><img src="https://img1.baidu.com/it/u=3125230918,1089023358&amp;fm=26&amp;fmt=auto&amp;gp=0.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="butterfly主题美化"/></a><div class="content"><a class="title" href="/2021/07/15/butterfly%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96/" title="butterfly主题美化">butterfly主题美化</a><time datetime="2021-07-15T03:19:32.000Z" title="发表于 2021-07-15 11:19:32">2021-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/07/02/12_(%E6%8B%BE%E8%B4%B0)_Element-ui/" title="Element-ui"><img src="https://ftp.bmp.ovh/imgs/2021/07/2d95679ad9193851.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Element-ui"/></a><div class="content"><a class="title" href="/2021/07/02/12_(%E6%8B%BE%E8%B4%B0)_Element-ui/" title="Element-ui">Element-ui</a><time datetime="2021-07-02T08:15:24.000Z" title="发表于 2021-07-02 16:15:24">2021-07-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/06/28/11_(%E6%8B%BE%E5%A3%B9)_VUEX=day8_19/" title="VUEX"><img src="https://ftp.bmp.ovh/imgs/2021/07/2d95679ad9193851.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="VUEX"/></a><div class="content"><a class="title" href="/2021/06/28/11_(%E6%8B%BE%E5%A3%B9)_VUEX=day8_19/" title="VUEX">VUEX</a><time datetime="2021-06-28T12:09:27.000Z" title="发表于 2021-06-28 20:09:27">2021-06-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/06/25/10_(%E6%8B%BE)_export%E3%80%81import%E3%80%81style%E3%80%81reder%E3%80%81@%E8%87%AA%E5%AE%9A%E4%B9%89%E8%B7%AF%E5%BE%84%E5%8F%98%E9%87%8Fay8_18/" title="export、import、style、render、@自定义路径变量"><img src="https://ftp.bmp.ovh/imgs/2021/07/2d95679ad9193851.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="export、import、style、render、@自定义路径变量"/></a><div class="content"><a class="title" href="/2021/06/25/10_(%E6%8B%BE)_export%E3%80%81import%E3%80%81style%E3%80%81reder%E3%80%81@%E8%87%AA%E5%AE%9A%E4%B9%89%E8%B7%AF%E5%BE%84%E5%8F%98%E9%87%8Fay8_18/" title="export、import、style、render、@自定义路径变量">export、import、style、render、@自定义路径变量</a><time datetime="2021-06-25T09:53:31.000Z" title="发表于 2021-06-25 17:53:31">2021-06-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/06/21/9_(%E7%8E%96)_Vue%E5%88%9D%E6%AD%A5%E8%AE%B2%E8%A7%A3/" title="vue初步讲解"><img src="https://ftp.bmp.ovh/imgs/2021/07/2d95679ad9193851.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="vue初步讲解"/></a><div class="content"><a class="title" href="/2021/06/21/9_(%E7%8E%96)_Vue%E5%88%9D%E6%AD%A5%E8%AE%B2%E8%A7%A3/" title="vue初步讲解">vue初步讲解</a><time datetime="2021-06-21T06:07:55.000Z" title="发表于 2021-06-21 14:07:55">2021-06-21</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By 星海行舟</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="font-plus" type="button" title="放大字体"><i class="fas fa-plus"></i></button><button id="font-minus" type="button" title="缩小字体"><i class="fas fa-minus"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: '',
+      appKey: '',
+      placeholder: '在这里留下你的看法或者疑问',
+      avatar: 'monsterid',
+      meta: 'nick,mail,link'.split(','),
+      pageSize: '10',
+      lang: 'zh-CN',
+      recordIP: false,
+      serverURLs: '',
+      emojiCDN: '',
+      emojiMaps: "",
+      enableQQ: false,
+      path: window.location.pathname,
+      requiredFields: ["nick,mail"],
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
